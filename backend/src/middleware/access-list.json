@@ -1,0 +1,362 @@
+[
+  {
+    "url": "/login",
+    "accesses": [
+      {
+        "roles": ["anonymous", "member", "admin"],
+        "methods": ["POST"],
+        "description": "Login (or already logged in)"
+      },
+      {
+        "roles": ["anonymous", "member", "admin"],
+        "methods": ["GET"],
+        "description": "Get session user (or not logged in)"
+      },
+      {
+        "roles": ["member", "admin"],
+        "methods": ["DELETE"],
+        "description": "Logout"
+      }
+    ]
+  },
+  {
+    "url": "/users",
+    "accesses": [
+      {
+        "roles": ["anonymous", "member", "admin"],
+        "methods": ["POST"],
+        "description": "Register user"
+      },
+      {
+        "roles": ["admin"],
+        "methods": ["GET"],
+        "description": "List users (admin only)"
+      }
+    ]
+  },
+  {
+    "url": "/users/:id",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["GET", "PATCH", "DELETE"],
+        "description": "Self or admin (enforced in route)"
+      }
+    ]
+  },
+  {
+    "url": "/users/by-email/:email",
+    "accesses": [
+      {
+        "roles": ["*"],
+        "methods": ["GET"],
+        "description": "Email availability check"
+      }
+    ]
+  },
+  {
+    "url": "/users/by-username/:username",
+    "accesses": [
+      {
+        "roles": ["*"],
+        "methods": ["GET"],
+        "description": "Username availability check"
+      }
+    ]
+  },
+
+  {
+    "url": "/forums",
+    "accesses": [
+      {
+        "roles": ["*"],
+        "methods": ["GET"],
+        "description": "List forums"
+      },
+      {
+        "roles": ["member", "admin"],
+        "methods": ["POST"],
+        "description": "Create forum (via /forum)"
+      }
+    ]
+  },
+  {
+    "url": "/forum",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["POST"],
+        "description": "Create forum"
+      }
+    ]
+  },
+  {
+    "url": "/forums/:id",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["PATCH"],
+        "description": "Update forum (creator/admin)"
+      },
+      {
+        "roles": ["admin"],
+        "methods": ["DELETE"],
+        "description": "Delete forum (admin)"
+      }
+    ]
+  },
+  {
+    "url": "/forums/:id/threads",
+    "accesses": [
+      {
+        "roles": ["*"],
+        "methods": ["GET"],
+        "description": "List threads in forum"
+      },
+      {
+        "roles": ["member", "admin"],
+        "methods": ["POST"],
+        "description": "Create thread in forum"
+      }
+    ]
+  },
+  {
+    "url": "/forums/:forumId/threads",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["POST"],
+        "description": "Create thread in forum (alias param name)"
+      }
+    ]
+  },
+  {
+    "url": "/forums/by-id/:id",
+    "accesses": [
+      {
+        "roles": ["*"],
+        "methods": ["GET"],
+        "description": "Forum detail by id"
+      }
+    ]
+  },
+  {
+    "url": "/forums/by-name/:name",
+    "accesses": [
+      {
+        "roles": ["*"],
+        "methods": ["GET"],
+        "description": "Forum detail by name"
+      }
+    ]
+  },
+  {
+    "url": "/forums/by-slug/:slug",
+    "accesses": [
+      {
+        "roles": ["*"],
+        "methods": ["GET"],
+        "description": "Forum detail by slug"
+      }
+    ]
+  },
+
+  {
+    "url": "/threads",
+    "accesses": [
+      {
+        "roles": ["*"],
+        "methods": ["GET"],
+        "description": "List threads"
+      },
+      {
+        "roles": ["member", "admin"],
+        "methods": ["POST", "PATCH"],
+        "description": "Create/update threads"
+      }
+    ]
+  },
+  {
+    "url": "/threads/:id",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["PATCH"],
+        "description": "Update thread"
+      }
+    ]
+  },
+  {
+    "url": "/threads/:id/visibility",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["PATCH"],
+        "description": "Set visibility"
+      }
+    ]
+  },
+  {
+    "url": "/threads/:id/moderators",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["POST"],
+        "description": "Assign moderator"
+      }
+    ]
+  },
+  {
+    "url": "/threads/:id/moderators/:userId",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["DELETE"],
+        "description": "Revoke moderator"
+      }
+    ]
+  },
+  {
+    "url": "/threads/:id/members",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["POST"],
+        "description": "Add member (mod/owner/admin enforced)"
+      }
+    ]
+  },
+  {
+    "url": "/threads/:id/members/:userId",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["DELETE"],
+        "description": "Remove member (mod/owner/admin enforced)"
+      }
+    ]
+  },
+  {
+    "url": "/threads/by-title/:title",
+    "accesses": [
+      {
+        "roles": ["*"],
+        "methods": ["GET"],
+        "description": "Thread detail by title + messages"
+      }
+    ]
+  },
+  {
+    "url": "/threads/by-id/:id",
+    "accesses": [
+      {
+        "roles": ["*"],
+        "methods": ["GET"],
+        "description": "Thread detail by id + messages"
+      }
+    ]
+  },
+  {
+    "url": "/thread/:idOrTitle",
+    "accesses": [
+      {
+        "roles": ["*"],
+        "methods": ["GET"],
+        "description": "Thread detail by id or title"
+      }
+    ]
+  },
+  {
+    "url": "/:forum/:thread",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["DELETE"],
+        "description": "Delete thread (owner/admin enforced)"
+      }
+    ]
+  },
+
+  {
+    "url": "/posts",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["POST"],
+        "description": "Create post"
+      }
+    ]
+  },
+  {
+    "url": "/posts/:id",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["PATCH", "DELETE"],
+        "description": "Edit/delete post (ownership/mod/admin enforced)"
+      }
+    ]
+  },
+  {
+    "url": "/posts/:id/block",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["PATCH"],
+        "description": "Block post (mod/owner/admin enforced)"
+      }
+    ]
+  },
+  {
+    "url": "/posts/:id/restore",
+    "accesses": [
+      {
+        "roles": ["admin"],
+        "methods": ["PATCH"],
+        "description": "Restore post (admin)"
+      }
+    ]
+  },
+
+  {
+    "url": "/threads/:id/posts",
+    "accesses": [
+      {
+        "roles": ["member", "admin"],
+        "methods": ["POST"],
+        "description": "Create post via thread alias"
+      }
+    ]
+  },
+  {
+    "url": "/threads/:id/block",
+    "accesses": [
+      {
+        "roles": ["admin"],
+        "methods": ["PATCH"],
+        "description": "Block thread (admin)"
+      }
+    ]
+  },
+  {
+    "url": "/threads/:id/restore",
+    "accesses": [
+      {
+        "roles": ["admin"],
+        "methods": ["PATCH"],
+        "description": "Restore thread (admin)"
+      }
+    ]
+  },
+
+  {
+    "url": "/csrf-token",
+    "accesses": [
+      {
+        "roles": ["anonymous", "member", "admin"],
+        "methods": ["GET"],
+        "description": "Get CSRF token"
+      }
+    ]
+  }
+]

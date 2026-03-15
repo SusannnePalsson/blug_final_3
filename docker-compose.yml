@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16
+    container_name: blug_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: blug
+      POSTGRES_USER: blug_app
+      POSTGRES_PASSWORD: blug_app_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - blug_pgdata:/var/lib/postgresql/data
+
+volumes:
+  blug_pgdata:

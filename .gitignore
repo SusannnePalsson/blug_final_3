@@ -1,0 +1,24 @@
+# Node
+node_modules/
+.npm/
+
+# Env files
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+
+# Builds
+/dist/
+/build/
+/.vite/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+.idea/
